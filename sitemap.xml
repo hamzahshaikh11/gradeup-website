@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://gradeup.tutoring/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://gradeup.tutoring/results/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://gradeup.tutoring/notes/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://gradeup.tutoring/syllabus/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://gradeup.tutoring/blog/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.80</priority>
+  </url>
+</urlset>
