@@ -23,7 +23,11 @@
 
 
 /* Reusable Utility Classes */
-.section-padding { padding: 4.5rem 0; }
+.section-padding { 
+    padding-top: 4.5rem; 
+    padding-bottom: 4.5rem; 
+}
+
 
 .section-heading { 
     font-family: 'Outfit', sans-serif;
@@ -105,12 +109,16 @@ ul {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
+
 .section {
-    padding: 4rem 0;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
+
 
 
 .btn {
@@ -192,12 +200,14 @@ header {
     grid-template-columns: 1.2fr 0.8fr;
     gap: 3rem;
     align-items: center;
-    padding: 4rem 0;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 @media (max-width: 640px) {
     .hero {
-        padding: 1.5rem 0;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
         grid-template-columns: 1fr;
         display: flex;
         flex-direction: column;
@@ -774,7 +784,8 @@ input[type="date"], input[type="time"] {
 footer {
     background: var(--text);
     color: var(--white);
-    padding: 4rem 0 2rem;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
 }
 
 .footer-content {
@@ -820,8 +831,10 @@ footer {
 
 @media (max-width: 640px) {
     .section {
-        padding: 2.5rem 0;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
     }
+
 
     .nav-links {
         display: none;
@@ -1060,7 +1073,8 @@ footer {
 .landing-hero {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: var(--white);
-    padding: 8rem 0 6rem;
+    padding-top: 8rem;
+    padding-bottom: 6rem;
     text-align: center;
 }
 .landing-hero h1 {
