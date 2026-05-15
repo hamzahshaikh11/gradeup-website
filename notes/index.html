@@ -11,37 +11,73 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
+
 </head>
 <body>
 
     <header>
         <div class="container nav-container">
-            <a href="index.html" class="logo">Gradeup</a>
+            <a href="/" class="logo">Gradeup</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
             <nav class="nav-links">
-                <a href="index.html#subjects">Subjects</a>
-                <a href="index.html#batches">Batches</a>
-                <a href="index.html#teachers">Teachers</a>
-                <a href="notes.html">Notes</a>
+                <a href="/#subjects">Subjects</a>
+                <a href="/#batches">Batches</a>
+                <a href="/results/">Results</a>
+                <a href="/syllabus/">Syllabus</a>
+                <a href="/#teachers">Teachers</a>
+                <a href="/blog/">Blog</a>
+                <a href="/notes/">Notes</a>
             </nav>
-            <a href="index.html#enroll" class="btn btn-primary">Enroll Now</a>
+            <a href="/#enroll" class="btn btn-primary">Enroll Now</a>
         </div>
     </header>
+
 
     <main class="container" style="min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
         <div style="background: var(--surface); padding: 4rem; border-radius: var(--radius); box-shadow: var(--shadow); max-width: 600px;">
             <h1 style="color: var(--primary); margin-bottom: 1.5rem;">Notes & Resources</h1>
             <p style="font-size: 1.5rem; font-weight: 600; color: var(--text-light); margin-bottom: 2rem;">COMING SOON</p>
             <p style="color: var(--text-light); margin-bottom: 2rem;">We are currently curating a high-quality collection of IGCSE, CIE, and A-Level study materials, past paper solutions, and revision notes. Stay tuned!</p>
-            <a href="index.html" class="btn btn-primary">Back to Home</a>
+            <a href="/" class="btn btn-primary">Back to Home</a>
+
         </div>
     </main>
 
     <footer>
-        <div class="footer-bottom" style="border: none;">
-            <p>&copy; 2024 Gradeup Tutoring. All rights reserved.</p>
+        <div class="container footer-content">
+            <div>
+                <a href="/" class="logo" style="color: white; margin-bottom: 1rem; display: block;">Gradeup</a>
+                <p style="opacity: 0.7;">Premium online coaching for IGCSE, CIE & A-Level students across India and the Gulf.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul style="margin-top: 1rem; opacity: 0.7;">
+                    <li><a href="/#subjects">Subjects</a></li>
+                    <li><a href="/#batches">Batches</a></li>
+                    <li><a href="/results/">Results & Testimonials</a></li>
+                    <li><a href="/syllabus/">Syllabus</a></li>
+                    <li><a href="/blog/">Blog & Education Guides</a></li>
+                    <li><a href="/notes/">Notes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p style="opacity: 0.7; margin-top: 1rem;">Email: hamzahshaikh6789@gmail.com</p>
+                <p style="opacity: 0.7; margin-top: 0.5rem;">Phone: +91 7738096145</p>
+                <p style="opacity: 0.7; margin-top: 0.5rem;"><a href="https://wa.me/917738096145" style="color: #25d366; text-decoration: none;"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gradeup Tutoring. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="/main.js"></script>
+
 
 </body>
 </html>

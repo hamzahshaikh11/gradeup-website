@@ -20,29 +20,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
+
 </head>
 <body>
 
     <header>
         <div class="container nav-container">
-            <a href="index.html" class="logo">Gradeup</a>
+            <a href="/" class="logo">Gradeup</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
             <nav class="nav-links">
-                <a href="index.html#subjects">Subjects</a>
-                <a href="index.html#batches">Batches</a>
-                <a href="results.html">Results</a>
-                <a href="syllabus.html" class="active">Syllabus</a>
-                <a href="index.html#teachers">Teachers</a>
-                <a href="notes.html">Notes</a>
+                <a href="/#subjects">Subjects</a>
+                <a href="/#batches">Batches</a>
+                <a href="/results/">Results</a>
+                <a href="/syllabus/">Syllabus</a>
+                <a href="/#teachers">Teachers</a>
+                <a href="/blog/">Blog</a>
+                <a href="/notes/">Notes</a>
             </nav>
-            <a href="index.html#enroll" class="btn btn-primary">Enroll Now</a>
+            <a href="/#enroll" class="btn btn-primary">Enroll Now</a>
         </div>
     </header>
 
+
     <main>
-        <section class="section container" style="text-align: center; padding-top: 4rem;">
+        <section class="section container" style="text-align: center;">
             <span class="urgency-tag" style="background: var(--surface); color: var(--primary);">📚 Resource Center</span>
-            <h1 style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1.5rem;">Official Syllabus</h1>
+            <h1>Official Syllabus</h1>
+
             <p style="font-size: 1.1rem; color: var(--text-light); max-width: 700px; margin: 0 auto 3rem;">
                 Stay updated with the latest curriculum. These links redirect you to the official PDF given by Cambridge International Education (CIE).
             </p>
@@ -87,27 +95,29 @@
             <h2>Master the Syllabus with Gradeup</h2>
             <p style="margin: 1.5rem 0 2.5rem; color: var(--text-light);">Our expert tutors ensure 100% coverage of the Cambridge curriculum with a focus on past paper solving.</p>
             <div class="hero-ctas" style="justify-content: center;">
-                <a href="index.html#enroll" class="btn btn-primary">Book Free Trial</a>
-                <a href="#" class="btn-whatsapp-footer" style="color: #25d366; text-decoration: none; margin-left: 2rem;"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                <a href="/#enroll" class="btn btn-primary">Book Free Trial</a>
+                <a href="https://wa.me/917738096145" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
             <div>
-                <a href="index.html" class="logo" style="color: white; margin-bottom: 1rem; display: block;">Gradeup</a>
+                <a href="/" class="logo" style="color: white; margin-bottom: 1rem; display: block;">Gradeup</a>
                 <p style="opacity: 0.7;">Premium online coaching for IGCSE, CIE & A-Level students across India and the Gulf.</p>
             </div>
             <div>
                 <h4>Quick Links</h4>
                 <ul style="margin-top: 1rem; opacity: 0.7;">
-                    <li><a href="index.html#subjects">Subjects</a></li>
-                    <li><a href="index.html#batches">Batches</a></li>
-                    <li><a href="results.html">Results & Testimonials</a></li>
-                    <li><a href="syllabus.html">Syllabus</a></li>
-                    <li><a href="notes.html">Notes & Resources</a></li>
+                    <li><a href="/#subjects">Subjects</a></li>
+                    <li><a href="/#batches">Batches</a></li>
+                    <li><a href="/results/">Results & Testimonials</a></li>
+                    <li><a href="/syllabus/">Syllabus</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/notes/">Notes</a></li>
                 </ul>
             </div>
             <div>
@@ -117,7 +127,7 @@
                 <p style="opacity: 0.7; margin-top: 0.5rem;">
                     <a href="https://www.instagram.com/gradeupigcse/" target="_blank" style="color: #e1306c;"><i class="fab fa-instagram"></i> Instagram</a>
                 </p>
-                <p style="opacity: 0.7; margin-top: 0.5rem;"><a href="#" class="btn-whatsapp-footer" style="color: #25d366; text-decoration: none;"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></p>
+                <p style="opacity: 0.7; margin-top: 0.5rem;"><a href="https://wa.me/917738096145" style="color: #25d366; text-decoration: none;"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -125,6 +135,14 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <!-- Sticky Mobile CTA -->
+    <div class="mobile-sticky-cta">
+        <a href="/#enroll" class="btn btn-primary">Book Free Demo</a>
+        <a href="https://wa.me/917738096145" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat</a>
+    </div>
+
+    <script src="/main.js"></script>
+
 </body>
 </html>
+
