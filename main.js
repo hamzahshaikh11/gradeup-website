@@ -1,196 +1,139 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // WhatsApp Configuration
+    // Premium Loading Transition
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.8s ease-in-out';
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+
+    // Mistake Carousel Drag to Scroll Logic
+    const carousels = document.querySelectorAll('.mistake-carousel');
+    carousels.forEach(carousel => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        carousel.addEventListener('mousedown', (e) => {
+            isDown = true;
+            carousel.style.cursor = 'grabbing';
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+        });
+        carousel.addEventListener('mouseleave', () => {
+            isDown = false;
+            carousel.style.cursor = 'grab';
+        });
+        carousel.addEventListener('mouseup', () => {
+            isDown = false;
+            carousel.style.cursor = 'grab';
+        });
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 2; // Scroll-fast
+            carousel.scrollLeft = scrollLeft - walk;
+        });
+    });
+
+    // Unified WhatsApp Configuration & CTA Redirects
     const whatsappNumber = "917738096145"; // Real Contact: +91 7738096145
-    const whatsappMessage = encodeURIComponent("Hello Gradeup! I would like to inquire about coaching for my child.");
+    const whatsappMessage = encodeURIComponent("Hello Gradeup! I want to inquire regarding IGCSE tutoring.");
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
-    // Update all WhatsApp buttons
-    const whatsappBtns = document.querySelectorAll('.btn-whatsapp, .whatsapp-float, .btn-whatsapp-footer');
-    whatsappBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+    // Redirect all CTA links & buttons to WhatsApp
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest('a, button');
+        if (!target) return;
+
+        const href = target.getAttribute('href') || '';
+        const classes = target.className || '';
+
+        // Check if the link points to enrollment or is a WhatsApp CTA button/link
+        const isEnrollCta = href.includes('#enroll');
+        const isWhatsappLink = href.includes('wa.me');
+        const isWhatsappClass = classes.includes('btn-whatsapp') || 
+                                 classes.includes('whatsapp-float') || 
+                                 classes.includes('btn-whatsapp-footer') || 
+                                 classes.includes('btn-whatsapp-cta');
+
+        if (isEnrollCta || isWhatsappLink || isWhatsappClass) {
             e.preventDefault();
-            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
-        });
-    });
-
-    // Enrollment Form Submission
-    const enrollmentForm = document.getElementById('enrollmentForm');
-    const formStatus = document.getElementById('formStatus');
-
-    if (enrollmentForm) {
-        enrollmentForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const submitBtn = enrollmentForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerText;
-            const formData = new FormData(enrollmentForm);
-            
-            // Premium Loading State
-            submitBtn.innerText = "Sending...";
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = "0.7";
-
-            try {
-                const response = await fetch(enrollmentForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // Success State
-                    submitBtn.innerText = "Request Sent!";
-                    submitBtn.style.background = "#059669";
-                    submitBtn.style.opacity = "1";
-                    
-                    if (formStatus) {
-                        formStatus.innerText = "Thank you! We have received your request and will contact you shortly.";
-                        formStatus.style.display = "block";
-                        formStatus.style.color = "#059669";
-                    }
-
-                    enrollmentForm.reset();
-                    
-                    // Reset button after 5 seconds
-                    setTimeout(() => {
-                        submitBtn.innerText = originalText;
-                        submitBtn.style.background = "";
-                        submitBtn.disabled = false;
-                        submitBtn.style.opacity = "1";
-                        if (formStatus) formStatus.style.display = "none";
-                    }, 5000);
-
-                } else {
-                    throw new Error("Form submission failed");
-                }
-            } catch (error) {
-                // Error State
-                submitBtn.innerText = "Error!";
-                submitBtn.style.background = "#dc2626";
-                
-                if (formStatus) {
-                    formStatus.innerText = "Oops! Something went wrong. Please try again or chat on WhatsApp.";
-                    formStatus.style.display = "block";
-                    formStatus.style.color = "#dc2626";
-                }
-
-                setTimeout(() => {
-                    submitBtn.innerText = originalText;
-                    submitBtn.style.background = "";
-                    submitBtn.disabled = false;
-                    submitBtn.style.opacity = "1";
-                }, 3000);
-            }
-        });
-    }
-
-    // Intersection Observer for scroll animations (Refined)
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Stop observing once revealed
-            }
-        });
-    }, observerOptions);
-
-    // Observe all elements with the 'reveal' class
-    document.querySelectorAll('.reveal').forEach(el => {
-        observer.observe(el);
-    });
-
-    // Also observe existing sections for backward compatibility or general scroll feel
-    document.querySelectorAll('.section').forEach(section => {
-        section.classList.add('reveal');
-        observer.observe(section);
-    });
-
-    // FAQ Accordion Logic
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        if (question) {
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Close other items
-                faqItems.forEach(i => i.classList.remove('active'));
-                
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
+            window.open(whatsappUrl, '_blank');
         }
     });
 
-    // Blog Filtering Logic
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const blogCards = document.querySelectorAll('.blog-card');
+    // Premium Reveal System (Blur-to-Focus)
+    const premiumObserverOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
 
-    if (filterBtns.length > 0 && blogCards.length > 0) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+    const premiumObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                if (entry.target.classList.contains('reveal-blur')) {
+                    entry.target.style.filter = 'blur(0)';
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                }
+            }
+        });
+    }, premiumObserverOptions);
 
-                const category = btn.getAttribute('data-category');
+    document.querySelectorAll('.reveal, .reveal-blur').forEach(el => {
+        premiumObserver.observe(el);
+    });
 
-                blogCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'flex';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 50);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
+    // Parallax Effect for Floating Orbs
+    document.addEventListener('mousemove', (e) => {
+        const orbs = document.querySelectorAll('.glow-orb');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+
+        orbs.forEach((orb, index) => {
+            const speed = (index + 1) * 20;
+            orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+        });
+    });
+
+    // Hero Floating Cards Interaction
+    const heroVisual = document.querySelector('.hero-visual');
+    if (heroVisual) {
+        heroVisual.addEventListener('mousemove', (e) => {
+            const cards = heroVisual.querySelectorAll('.floating-card');
+            const rect = heroVisual.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            cards.forEach((card, index) => {
+                const depth = (index + 1) * 30;
+                card.style.transform = `translate(${x * depth}px, ${y * depth}px) rotate(${x * 5}deg)`;
+            });
+        });
+
+        heroVisual.addEventListener('mouseleave', () => {
+            const cards = heroVisual.querySelectorAll('.floating-card');
+            cards.forEach(card => {
+                card.style.transform = `translate(0, 0) rotate(0deg)`;
             });
         });
     }
-    // Mobile Menu Toggle
+
+    // All CTAs are unified and handled by the document click listener above
+
+    // Mobile Menu
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.querySelector('.nav-links');
-    const body = document.body;
-
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const icon = menuToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                body.style.overflow = '';
-            }
-        });
-
-        // Close menu when a link is clicked
-        const navItems = navLinks.querySelectorAll('a');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                body.style.overflow = '';
-            });
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
     }
 });
+
 

@@ -76,15 +76,17 @@
                 <i class="fas fa-bars"></i>
             </button>
 
-            <nav class="nav-links">
-                <a href="/#subjects">Subjects</a>
-                <a href="/#batches">Batches</a>
-                <a href="/results/">Results</a>
-                <a href="/syllabus/">Syllabus</a>
-                <a href="/#teachers">Teachers</a>
-                <a href="/blog/">Blog</a>
-                <a href="/notes/">Notes</a>
-            </nav>
+                <nav class="nav-links">
+                    <a href="/#subjects">Subjects</a>
+                    <a href="/#batches">Batches</a>
+                    <a href="/blueprint/" style="color: var(--secondary); font-weight: 700;">A* Blueprint <span style="font-size: 0.7rem; vertical-align: top; background: var(--secondary); color: white; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span></a>
+                    <a href="/results/">Results</a>
+                    <a href="/syllabus/">Syllabus</a>
+                    <a href="/#teachers">Teachers</a>
+                    <a href="/blog/">Blog</a>
+                    <a href="/notes/">Notes</a>
+                </nav>
+
             <a href="/#enroll" class="btn btn-primary">Enroll Now</a>
         </div>
     </header>
@@ -545,47 +547,16 @@
             <a href="#enroll" class="btn" style="background: white; color: var(--primary); padding: 1rem 2rem;">Book Free Demo</a>
         </section>
 
-        <!-- 9. Enrollment Form -->
-        <section id="enroll" class="section container enrollment-section">
-            <div style="text-align: center;">
-                <h2>Start Your Journey Today</h2>
-                <p>Fill out the form below and we'll get back to you with batch details.</p>
+        <!-- 9. WhatsApp CTA Section -->
+        <section id="enroll" class="section container enrollment-section" style="text-align: center;">
+            <div class="form-container" style="background: var(--surface); padding: 3rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow); max-width: 600px; margin: 0 auto;">
+                <h2 style="margin-bottom: 1rem; font-family: 'Outfit', sans-serif;">Start Your Journey Today</h2>
+                <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6;">Click below to chat with us on WhatsApp to book your free demo class or ask any questions.</p>
+                <a href="https://wa.me/917738096145?text=Hello%20Gradeup!%20I%20want%20to%20inquire%20regarding%20IGCSE%20tutoring." class="btn btn-primary btn-whatsapp-cta" style="display: inline-flex; align-items: center; gap: 10px; padding: 1.2rem 2.5rem; font-size: 1.1rem; border-radius: 12px; background: #25d366; border-color: #25d366; color: white; text-decoration: none; font-weight: 600; justify-content: center;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i> Chat on WhatsApp
+                </a>
             </div>
-            <div class="form-container">
-                <form id="enrollmentForm" action="https://formspree.io/f/xknadjzo" method="POST">
-                    <div class="form-group">
-                        <label for="parentName">Parent Name</label>
-                        <input type="text" id="parentName" name="parentName" placeholder="Enter your full name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Parent Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Include country code" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="grade">Student Grade</label>
-                        <select id="grade" name="grade" required>
-                            <option value="">Select Grade</option>
-                            <option value="Grade 8">Grade 8</option>
-                            <option value="Grade 9">Grade 9</option>
-                            <option value="Grade 10">Grade 10</option>
-                            <option value="AS-levels">AS-levels</option>
-                            <option value="A-levels">A-levels</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label for="callbackDate">Preferred Date</label>
-                            <input type="date" id="callbackDate" name="callbackDate" required>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label for="callbackTime">Preferred Time (IST)</label>
-                            <input type="time" id="callbackTime" name="callbackTime" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Request Callback</button>
-                    <p id="formStatus" style="text-align: center; margin-top: 1rem; display: none; font-weight: 600;"></p>
-                </form>
-            </div>
+        </section>
         <!-- 10. Roadmap Section -->
         <section class="section container">
             <div style="text-align: center; margin-bottom: 3rem;">
@@ -634,7 +605,9 @@
                 <ul style="margin-top: 1rem; opacity: 0.7;">
                     <li><a href="/#subjects">Subjects</a></li>
                     <li><a href="/#batches">Batches</a></li>
+                    <li><a href="/blueprint/">A* Blueprint</a></li>
                     <li><a href="/results/">Results & Testimonials</a></li>
+
                     <li><a href="/syllabus/">Syllabus</a></li>
                     <li><a href="/blog/">Blog & Education Guides</a></li>
                     <li><a href="/notes/">Notes & Resources</a></li>
