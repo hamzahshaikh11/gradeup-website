@@ -247,11 +247,25 @@ header {
     font-size: 1.5rem;
     font-weight: 800;
     color: var(--primary);
+    white-space: nowrap;
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: clamp(1rem, 1.6vw, 2rem);
+    align-items: center;
+}
+
+.nav-links a {
+    font-weight: 600;
+    color: var(--text-light);
+    white-space: nowrap;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
 }
 
 .menu-toggle {
@@ -906,8 +920,12 @@ footer {
         padding-top: 2.5rem;
         padding-bottom: 2.5rem;
     }
+    .whatsapp-float {
+        display: none !important;
+    }
+}
 
-
+@media (max-width: 1024px) {
     .nav-links {
         display: none;
         flex-direction: column;
@@ -921,6 +939,7 @@ footer {
         z-index: 2000;
         text-align: center;
         gap: 2rem;
+        overflow-y: auto;
     }
 
     .nav-links.active {
@@ -1097,6 +1116,7 @@ footer {
     .trust-card, .comparison-col {
         padding: 2rem;
     }
+}
 /* Blog System */
 .blog-filters {
     display: flex;
